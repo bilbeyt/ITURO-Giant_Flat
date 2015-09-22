@@ -55,3 +55,7 @@ docs/_build/
 
 # PyBuilder
 target/
+
+# otokon_form
+flat/db.sqlite3
+flat/media
