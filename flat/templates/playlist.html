@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block video %}
+<div class="col-md-12 text-center text-capitalize" style="padding-top:180px;">
+ <h1 class="text-left text-center text-capitalize margin-bottom90">PlayLists:</h1>
+   <div class="list-group text-center text-capitalize pad90">
+    {% for list in playlist %}
+     <h3><a href ="{% url "playlist_detail" list.slug %}">{{ list.name }}</a></h3>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

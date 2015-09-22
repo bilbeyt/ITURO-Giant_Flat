@@ -1,0 +1,15 @@
+{% verbatim %}
+<div ng-controller="AnnounceListCtrl">
+  <h3 class="text-capitalize pad-bottom45 text-center">Announcements</h3>
+        <h3 ng-repeat="item in announcements | orderBy: '-date'">
+          <div class="alert alert-{{item.announce_type}}">
+              <h5 style="display: block;"><i>Date added : {{item.date | date:"d-M-yyyy H:mm "}}</i></h5>
+              <h1 class="black">{{item.content_en}}</h1>
+          </div>
+          <div class="alert alert-{{item.announce_type}}">
+              <h5 style="display: block;"><i>Eklenme Tarihi : {{item.date | date:"d-M-yyyy H:mm "}}</i></h5>
+              <h1 class="black">{{item.content_tr}}</h1>
+          </div>
+        </h3>
+</div>
+{% endverbatim %}

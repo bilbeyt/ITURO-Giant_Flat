@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block video %}
+<div class="col-md-8">
+<h3 class="text-center pad-bottom45">{{playlist.0.name}}&nbsp;</h3>
+<div class="embed-responsive embed-responsive-16by9">
+<video id="example_video" class="video-js vjs-default-skin"
+controls="controls" autoplay onended="run()" width="640" height="360"
+<source src="/{{ url_list.0 }}" type='video/ogg' />
+<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+</div>
+<div id="playlist" style="display:none;">
+<h2>Playlist</h2>
+<ul>
+{% for url in url_list %}
+<li id="playlist-one">{{url}}</li>
+{% endfor %}
+</ul>
+</div>
+</div>
+<div class="col-md-4">
+  {% include "announce.html" %}
+</div>
+<script src="{% static "js/jquery-2.1.4.min.js" %}"></script>
+<script type="text/javascript">
+  var table = document.getElementById("playlist");
+  var cells = table.getElementsByTagName("li");
+  var values = $(cells).text()
+  var video_count = 0;
+  videoPlayer = document.getElementById("example_video");
+  arr_length = {{ url_list.count }};
+  function run(){
+    video_count++;
+    if (video_count == arr_length) video_count = 0;
+    nextVideo = $(cells[video_count]).text();
+    videoPlayer.src = "/" + nextVideo;
+    videoPlayer.play();
+  };
+  </script>
+{% endblock %}
